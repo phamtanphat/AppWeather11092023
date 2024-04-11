@@ -6,4 +6,11 @@ object AppCommon {
 
     // Time
     val TIME_REQUEST_DEFAULT = 30L
+
+    // app id
+    const val APP_ID = "2206d84c8189efe365465e3318f487aa"
+
+    // units
+    const val UNITS = "metric"
+    // time request default
 }
