@@ -5,11 +5,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.appweather11092023.R
 import com.example.appweather11092023.common.AppInterface
 import com.example.appweather11092023.data.repository.WeatherRepository
+import com.example.appweather11092023.presentation.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private val mainViewModel: MainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,16 +26,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val weatherRepo = WeatherRepository()
-        weatherRepo.requestTempByCityName("Ha Nwqewqeoi", object : AppInterface.OnListenResponse {
-            override fun <T> onSuccess(data: T) {
-
-            }
-
-            override fun onFail(message: String) {
-
-            }
-
-        })
+        mainViewModel.searchTempByCityName("Ha Noi")
     }
 }

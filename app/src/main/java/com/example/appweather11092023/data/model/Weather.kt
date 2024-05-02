@@ -6,6 +6,8 @@ data class Weather (
     var countryName: String? = "",
     var cityName: String? = "",
     var temp: Float? = 0.0f,
+    var tempMin: Float? = 0.0f,
+    var tempMax: Float? = 0.0f,
     var status: String? = "",
     var humidity: Float? = 0.0f,
     var cloud: Int? = 0,

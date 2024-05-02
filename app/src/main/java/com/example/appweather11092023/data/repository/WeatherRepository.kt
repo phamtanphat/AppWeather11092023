@@ -18,7 +18,7 @@ import kotlin.coroutines.CoroutineContext
 class WeatherRepository {
     private val apiService = RetrofitClient.getApiService()
 
-    fun requestTempByCityName(cityName: String, onListenResponse: AppInterface.OnListenResponse) {
+    fun requestTempByCityName(cityName: String, onListenResponse: AppInterface.OnListenResponse<TempCurrentDTO>) {
         CoroutineScope(Dispatchers.IO).launch {
             apiService.getTempByCityName(
                 appID = AppCommon.APP_ID,
@@ -37,7 +37,7 @@ class WeatherRepository {
                             onListenResponse.onFail(message)
                         } catch (_: Exception) { }
                     } else {
-                        onListenResponse.onSuccess(response.body())
+                        response.body()?.let { onListenResponse.onSuccess(it) }
                     }
                 }
 
