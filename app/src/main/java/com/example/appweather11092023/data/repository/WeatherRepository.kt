@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,11 +29,20 @@ class WeatherRepository {
                     call: Call<TempCurrentDTO>,
                     response: Response<TempCurrentDTO>
                 ) {
-                    Log.d("pphat", response.body().toString())
+                    if (response.errorBody() != null) {
+                        try {
+                            val errorBodyString = response.errorBody()?.string() ?: "{}"
+                            val jsonError = JSONObject(errorBodyString)
+                            val message = jsonError.getString("message")
+                            onListenResponse.onFail(message)
+                        } catch (_: Exception) { }
+                    } else {
+                        onListenResponse.onSuccess(response.body())
+                    }
                 }
 
                 override fun onFailure(call: Call<TempCurrentDTO>, t: Throwable) {
-                    Log.d("pphat", t.message.toString())
+                    onListenResponse.onFail(t.message.toString())
                 }
             })
         }

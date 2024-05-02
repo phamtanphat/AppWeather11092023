@@ -20,13 +20,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         val weatherRepo = WeatherRepository()
-        weatherRepo.requestTempByCityName("Ha Noi", object : AppInterface.OnListenResponse {
+        weatherRepo.requestTempByCityName("Ha Nwqewqeoi", object : AppInterface.OnListenResponse {
             override fun <T> onSuccess(data: T) {
 
             }
 
             override fun onFail(message: String) {
-                TODO("Not yet implemented")
+
             }
 
         })
