@@ -31,19 +31,19 @@ data class WeatherTempCurrentDTO(
 )
 
 data class MainTempCurrentDTO(
-    val temp: Long,
+    val temp: Float,
     @SerializedName("feels_like")
-    val feelsLike: Long,
+    val feelsLike: Float,
     @SerializedName("temp_min")
-    val tempMin: Long,
+    val tempMin: Float,
     @SerializedName("temp_max")
-    val tempMax: Long,
-    val pressure: Long,
-    val humidity: Long,
+    val tempMax: Float,
+    val pressure: Float,
+    val humidity: Float,
     @SerializedName("sea_level")
-    val seaLevel: Long,
+    val seaLevel: Float,
     @SerializedName("grnd_level")
-    val grndLevel: Long,
+    val grndLevel: Float,
 )
 
 data class WindTempCurrentDTO(

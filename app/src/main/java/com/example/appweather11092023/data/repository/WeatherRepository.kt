@@ -1,5 +1,6 @@
 package com.example.appweather11092023.data.repository
 
+import android.util.Log
 import com.example.appweather11092023.common.AppCommon
 import com.example.appweather11092023.common.AppInterface
 import com.example.appweather11092023.data.api.RetrofitClient
@@ -27,11 +28,11 @@ class WeatherRepository {
                     call: Call<TempCurrentDTO>,
                     response: Response<TempCurrentDTO>
                 ) {
-
+                    Log.d("pphat", response.body().toString())
                 }
 
                 override fun onFailure(call: Call<TempCurrentDTO>, t: Throwable) {
-
+                    Log.d("pphat", t.message.toString())
                 }
             })
         }

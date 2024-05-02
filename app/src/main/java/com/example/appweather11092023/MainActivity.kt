@@ -5,6 +5,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.appweather11092023.common.AppInterface
+import com.example.appweather11092023.data.repository.WeatherRepository
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +18,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val weatherRepo = WeatherRepository()
+        weatherRepo.requestTempByCityName("Ha Noi", object : AppInterface.OnListenResponse {
+            override fun <T> onSuccess(data: T) {
+
+            }
+
+            override fun onFail(message: String) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 }
