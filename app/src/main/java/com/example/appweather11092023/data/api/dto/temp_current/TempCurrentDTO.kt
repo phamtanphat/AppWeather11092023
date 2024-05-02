@@ -47,13 +47,13 @@ data class MainTempCurrentDTO(
 )
 
 data class WindTempCurrentDTO(
-    val speed: Double,
+    val speed: Float,
     val deg: Long,
-    val gust: Double,
+    val gust: Float,
 )
 
 data class CloudsTempCurrentDTO(
-    val all: Long,
+    val all: Int,
 )
 
 data class SysTempCurrentDTO(
